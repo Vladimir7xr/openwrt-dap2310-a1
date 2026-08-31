@@ -1,0 +1,159 @@
+/dts-v1/;
+#include "ar7242.dtsi"
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include <dt-bindings/leds/common.h>
+
+/ {
+        compatible = "dlink,dap-2310-a1", "qca,ar7242";
+        model = "D-Link DAP-2310 rev. A1";
+
+        aliases {
+                led-boot = &led_power;
+                led-failsafe = &led_power;
+                led-running = &led_power;
+        };
+
+        chosen {
+                bootargs = "console=ttyS0,115200";
+        };
+
+        memory@0 {
+                device_type = "memory";
+                reg = <0x0 0x04000000>;
+        };
+
+        keys {
+                compatible = "gpio-keys";
+
+                reset {
+                        label = "reset";
+                        linux,code = <KEY_RESTART>;
+                        gpios = <&gpio 12 GPIO_ACTIVE_LOW>;
+                        debounce-interval = <60>;
+                };
+        };
+
+        leds {
+                compatible = "gpio-leds";
+
+                led_power: power {
+                        function = LED_FUNCTION_POWER;
+                        color = <LED_COLOR_ID_GREEN>;
+                        gpios = <&gpio 14 GPIO_ACTIVE_HIGH>;
+                        default-state = "on";
+                };
+
+                wlan {
+                        function = LED_FUNCTION_WLAN;
+                        color = <LED_COLOR_ID_GREEN>;
+                        gpios = <&gpio 11 GPIO_ACTIVE_LOW>;
+                        linux,default-trigger = "netdev";
+                        trigger-device = "wlan0";
+                        trigger-sources = <&wlan_netdev>;
+                };
+        };
+};
+
+&uart {
+        status = "okay";
+};
+
+&spi {
+        status = "okay";
+
+        flash@0 {
+                compatible = "jedec,spi-nor";
+                reg = <0>;
+                spi-max-frequency = <25000000>;
+                #address-cells = <1>;
+                #size-cells = <1>;
+
+                partitions {
+                        compatible = "fixed-partitions";
+                        #address-cells = <1>;
+                        #size-cells = <1>;
+
+                        partition@0 {
+                                label = "u-boot";
+                                reg = <0x000000 0x020000>;
+                                read-only;
+                        };
+
+                        partition@20000 {
+                                compatible = "denx,uimage";
+                                label = "firmware";
+                                reg = <0x020000 0xfc0000>;
+                        };
+
+                        partition@fe0000 {
+                                label = "env";
+                                reg = <0xfe0000 0x010000>;
+                        };
+
+                        art: partition@ff0000 {
+                                compatible = "nvmem-cells";
+                                label = "art";
+                                reg = <0xff0000 0x010000>;
+                                read-only;
+                                #address-cells = <1>;
+                                #size-cells = <1>;
+
+                                macaddr_lan: macaddr@0 {
+                                        reg = <0x0 0x6>;
+                                };
+
+                                macaddr_wlan: macaddr@6 {
+                                        reg = <0x6 0x6>;
+                                };
+
+                                cal_art: cal@1000 {
+                                        reg = <0x1000 0x1000>;
+                                };
+                        };
+                };
+        };
+};
+
+&mdio0 {
+        status = "okay";
+
+        phy0: ethernet-phy@0 {
+                reg = <0>;
+                compatible = "ethernet-phy-id004d.d072", "ethernet-phy-ieee802.3-c22";
+                eee-broken-100tx;
+                eee-broken-1000t;
+        };
+};
+
+&eth0 {
+        status = "okay";
+        phy-mode = "rgmii-id";
+        pll-data = <0x02000000 0x00000101 0x00001313>;
+        phy-handle = <&phy0>;
+        
+        nvmem-cells = <&macaddr_lan>;
+        nvmem-cell-names = "mac-address";
+};
+
+&eth1 {
+        status = "okay";
+        mac-address = [00 03 7F A0 11 44];
+};
+
+&pcie {
+        status = "okay";
+        qca,retries = <3>;
+        qca,clk-mux = <0>;
+        qca,phy-mode = "pcie";
+
+        wifi@0,0 {
+                compatible = "pci168c,002a";
+                reg = <0x0000 0 0 0 0>;
+                nvmem-cells = <&macaddr_wlan>, <&cal_art>;
+                nvmem-cell-names = "mac-address", "calibration";
+                
+                wlan_netdev: wlan-netdev {
+                };
+        };
+};
