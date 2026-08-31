@@ -250,3 +250,8 @@ Mon Aug 31 00:02:54 2026 daemon.notice hostapd: phy0-ap0: AP-ENABLED
 ```
 
 </details>
+
+## ⚠️ Disclaimer
+
+**Use this at your own risk!** Modifying device firmware can brick your hardware. 
+I am not responsible for any damage, data loss, or broken devices caused by using these configuration files.
