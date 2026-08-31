@@ -5,7 +5,7 @@ define Device/dlink_dap-2310-a1
   DEVICE_VARIANT := rev. A1
   IMAGE_SIZE := 16128k
   SUPPORTED_DEVICES := dlink,dap-2310-a1
-  KERNEL := kernel-bin | append-dtb | lzma | uImage lzma
+  KERNEL := kernel-bin | append-dtb | lzma | uImage lzma | pad-to 64k
   IMAGES := sysupgrade.bin
   IMAGE/sysupgrade.bin := append-kernel | append-rootfs | pad-rootfs | check-size | append-metadata
   DEVICE_PACKAGES := kmod-ath9k
