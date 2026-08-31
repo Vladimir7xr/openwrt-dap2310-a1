@@ -190,6 +190,8 @@ root@DAP-2310:~# dmesg
 [   61.565882] ath: regdomain 0x8283 dynamically updated by user
 [   63.007990] br-lan: port 3(phy0-ap0) entered blocking state
 [   63.013734] br-lan: port 3(phy0-ap0) entered forwarding state
+
+#End of syslog:
 Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'lan' is enabled
 Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' is enabled
 Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' is setting up now
