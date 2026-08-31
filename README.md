@@ -190,6 +190,62 @@ root@DAP-2310:~# dmesg
 [   61.565882] ath: regdomain 0x8283 dynamically updated by user
 [   63.007990] br-lan: port 3(phy0-ap0) entered blocking state
 [   63.013734] br-lan: port 3(phy0-ap0) entered forwarding state
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'lan' is enabled
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' is enabled
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' is setting up now
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' is now up
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Network device 'eth1' link is up
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: bridge 'br-lan' link is up
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'lan' has link connectivity
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'lan' is setting up now
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Network device 'lo' link is up
+Mon Aug 31 00:02:42 2026 daemon.notice netifd: Interface 'loopback' has link connectivity
+Mon Aug 31 00:02:43 2026 user.notice ucitrack: Setting up non-init /etc/config/fstab reload handler: /sbin/block mount
+Mon Aug 31 00:02:43 2026 daemon.notice netifd: lan (1546): udhcpc: started, v1.37.0
+Mon Aug 31 00:02:44 2026 user.notice ucitrack: Setting up /etc/config/system reload trigger for non-procd /etc/init.d/led
+Mon Aug 31 00:02:44 2026 daemon.notice netifd: radio0 (1477): wifi-scripts: Starting
+Mon Aug 31 00:02:45 2026 daemon.notice hostapd: Set new config for phy phy0:
+Mon Aug 31 00:02:45 2026 daemon.notice wpa_supplicant[1108]: Set new config for phy phy0
+Mon Aug 31 00:02:45 2026 daemon.notice netifd: lan (1546): udhcpc: broadcasting discover
+Mon Aug 31 00:02:45 2026 user.notice ucitrack: Setting up /etc/config/luci_statistics reload dependency on /etc/config/system
+Mon Aug 31 00:02:45 2026 user.notice ucitrack: Setting up /etc/config/dhcp reload dependency on /etc/config/system
+Mon Aug 31 00:02:46 2026 kern.info kernel: [   58.824369] eth0: link up (1000Mbps/Full duplex)
+Mon Aug 31 00:02:46 2026 kern.info kernel: [   58.829152] br-lan: port 1(eth0) entered blocking state
+Mon Aug 31 00:02:46 2026 kern.info kernel: [   58.834509] br-lan: port 1(eth0) entered forwarding state
+Mon Aug 31 00:02:46 2026 daemon.notice netifd: Network device 'eth0' link is up
+Mon Aug 31 00:02:46 2026 daemon.notice wpa_supplicant[1108]: Set new config for phy phy0
+Mon Aug 31 00:02:47 2026 daemon.notice hostapd: Set new config for phy phy0: /var/run/hostapd-phy0.conf
+Mon Aug 31 00:02:47 2026 daemon.notice hostapd: Restart interface for phy phy0
+Mon Aug 31 00:02:48 2026 daemon.notice netifd: lan (1546): udhcpc: broadcasting discover
+Mon Aug 31 00:02:48 2026 daemon.notice netifd: lan (1546): udhcpc: broadcasting select for 192.168.177.2, server 192.168.177.1
+Mon Aug 31 00:02:48 2026 daemon.notice netifd: lan (1546): udhcpc: lease of 192.168.177.2 obtained from 192.168.177.1, lease time 6629
+Mon Aug 31 00:02:48 2026 daemon.notice hostapd: Configuration file: <inline> (phy phy0) --> new PHY
+Mon Aug 31 00:02:48 2026 daemon.notice hostapd: Configuration file: Reading configuration file '<inline>'
+Mon Aug 31 00:02:48 2026 daemon.notice hostapd: Configuration file: Reading configuration file '<inline>'
+Mon Aug 31 00:02:48 2026 daemon.notice netifd: radio0 (1477): wifi-scripts: Configuring 'phy0' txantenna: 4294967295, rxantenna: 4294967295 distance: 0
+Mon Aug 31 00:02:48 2026 daemon.notice netifd: radio0 (1477): wifi-scripts: Preparing interface: phy0-ap0 with MAC: 00:03:7f:f3:17:15
+Mon Aug 31 00:02:48 2026 daemon.notice wpa_supplicant[1108]: Start pending MLD interfaces
+Mon Aug 31 00:02:48 2026 kern.info kernel: [   61.417789] br-lan: port 3(phy0-ap0) entered blocking state
+Mon Aug 31 00:02:48 2026 kern.info kernel: [   61.423546] br-lan: port 3(phy0-ap0) entered disabled state
+Mon Aug 31 00:02:48 2026 kern.info kernel: [   61.429293] ath9k 0000:00:00.0 phy0-ap0: entered allmulticast mode
+Mon Aug 31 00:02:48 2026 kern.info kernel: [   61.436055] ath9k 0000:00:00.0 phy0-ap0: entered promiscuous mode
+Mon Aug 31 00:02:48 2026 daemon.notice hostapd: phy0-ap0: interface state UNINITIALIZED->COUNTRY_UPDATE
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.536701] ath: EEPROM regdomain: 0x8283
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.540788] ath: EEPROM indicates we should expect a country code
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.547249] ath: doing EEPROM country->regdmn map search
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.552733] ath: country maps to regdmn code: 0x3d
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.557634] ath: Country alpha2 being used: RU
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.562304] ath: Regpair used: 0x3d
+Mon Aug 31 00:02:48 2026 kern.debug kernel: [   61.565882] ath: regdomain 0x8283 dynamically updated by user
+Mon Aug 31 00:02:50 2026 daemon.notice netifd: Interface 'lan' is now up
+Mon Aug 31 00:02:50 2026 daemon.notice netifd: lan (1546): udhcpc: sending renew to server 192.168.177.1
+Mon Aug 31 00:02:50 2026 daemon.notice netifd: lan (1546): udhcpc: lease of 192.168.177.2 obtained from 192.168.177.1, lease time 6627
+Mon Aug 31 00:02:50 2026 kern.info kernel: [   63.007990] br-lan: port 3(phy0-ap0) entered blocking state
+Mon Aug 31 00:02:50 2026 kern.info kernel: [   63.013734] br-lan: port 3(phy0-ap0) entered forwarding state
+Mon Aug 31 00:02:50 2026 daemon.notice netifd: Network device 'phy0-ap0' link is up
+Mon Aug 31 00:02:54 2026 daemon.info procd: - init complete -
+Mon Aug 31 00:02:54 2026 daemon.notice hostapd: phy0-ap0: interface state COUNTRY_UPDATE->ENABLED
+Mon Aug 31 00:02:54 2026 daemon.notice hostapd: phy0-ap0: AP-ENABLED
 
 ```
 
